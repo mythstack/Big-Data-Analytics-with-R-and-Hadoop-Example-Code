@@ -1,0 +1,47 @@
+================================================================================
+Book - Big Data Analytics with R and Hadoop
+Book URL - https://www.packtpub.com/big-data-analytics-with-r-and-hadoop/book
+Chapter - 4 Using Hadoop Streaming with R 
+Author - Vignesh Prajapati
+Contact - a. email -> vignesh2066@gmail.com
+          b. LinkedIn -> http://www.linkedin.com/in/vigneshprajapati   	  
+================================================================================
+
+$key
+[1] "low"  "high"
+
+$val
+$val[[1]]
+$val[[1]][[1]]
+                                                 pagePath
+1  /medicalcollege/s-s-agarwal-college-of-nursing-navsari
+2  /meritcalc.php
+3  /merit-calculator
+4  /new_mba_college_list.php
+5  /newmecollege.php
+6  /newmpharmcollege.php
+7  /ourteam.php
+8  /search
+9  /search2.php
+10 /search3.php
+11 /search.php
+
+$val[[1]][[2]]
+                                        pagePath
+1                                   /abranch.php
+2                                    /admission/
+3                                    /admissioN/
+4  /admission/diplomaadmissionpossibilities1.php
+5                               /advertisewithus
+6                     /bindingcollegedetails.php
+7                      /bindingmpharmcollege.php
+8           /engineering-admission-possibilities
+9                     /gtuadmissionhelpline-team
+10           /gujarat-degree-engineering-college
+11    /MBA-MCA/aes-institute-of-computer-studies
+
+
+$val[[2]]
+$val[[2]][[1]]
+   pagePath
+12        /

@@ -1,0 +1,132 @@
+================================================================================
+Book - Big Data Analytics with R and Hadoop
+Book URL - https://www.packtpub.com/big-data-analytics-with-r-and-hadoop/book
+Chapter - 2 Writing Hadoop MapReduce Programs
+Author - Vignesh Prajapati
+Contact - a. email -> vignesh2066@gmail.com
+          b. LinkedIn -> http://www.linkedin.com/in/vigneshprajapati   	  
+================================================================================
+
+// Steps for Running Hadoop WordCount MapReduce
+1. Make folder for storing the compiled  classes 
+vignesh@ubuntu:~/Desktop/pc/PacktPub$ mkdir classes
+
+2. complie the java files developed for Map and Reduce which are Map.java and Reduce.java
+vignesh@ubuntu:~/Desktop/pc/PacktPub$ javac -classpath /usr/local/hadoop/hadoop-core-1.1.0.jar:/usr/local/hadoop/lib/commons-cli-1.2.jar -d classes *.java
+
+3. Make jar - wordcount.jar from compiled classes 
+vignesh@ubuntu:~/Desktop/pc/PacktPub$ cd classes/
+vignesh@ubuntu:~/Desktop/pc/PacktPub/classes$ jar -cvf wordcount.jar com
+added manifest
+adding: com/(in = 0) (out= 0)(stored 0%)
+adding: com/PACKT/(in = 0) (out= 0)(stored 0%)
+adding: com/PACKT/chapter1/(in = 0) (out= 0)(stored 0%)
+adding: com/PACKT/chapter1/Reduce.class(in = 1542) (out= 617)(deflated 59%)
+adding: com/PACKT/chapter1/Map.class(in = 1674) (out= 685)(deflated 59%)
+adding: com/PACKT/chapter1/WordCount.class(in = 1807) (out= 849)(deflated 53%)
+
+4.Copy wordcount.jar to hadoop Directory
+root@ubuntu:/home/vignesh/Desktop/pc/PacktPub/classes# cp wordcount.jar /usr/local/hadoop/
+
+5. locate to Hadoop_HOME,
+First Login With Hadoop user: (hduser)
+Go to Hadoop DIrectory 
+hduser@ubuntu:~$ cd $HADOOP_HOME
+
+6. Start Hadoop Cluster
+hduser@ubuntu:/usr/local/hadoop$ bin/start-all.sh
+
+ouput::
+starting namenode, logging to /usr/local/hadoop/libexec/../logs/hadoop-hduser-namenode-ubuntu.out
+localhost: starting datanode, logging to /usr/local/hadoop/libexec/../logs/hadoop-hduser-datanode-ubuntu.out
+localhost: starting secondarynamenode, logging to /usr/local/hadoop/libexec/../logs/hadoop-hduser-secondarynamenode-ubuntu.out
+starting jobtracker, logging to /usr/local/hadoop/libexec/../logs/hadoop-hduser-jobtracker-ubuntu.out
+localhost: starting tasktracker, logging to /usr/local/hadoop/libexec/../logs/hadoop-hduser-tasktracker-ubuntu.out
+
+7. Check all running daemons, 
+hduser@ubuntu:/usr/local/hadoop$ jps
+
+Output:: 
+2988 NameNode
+3432 JobTracker
+3330 SecondaryNameNode
+3591 TaskTracker
+3168 DataNode
+3875 Jps
+
+8. Create HDFS directory - /wordcount/input/, 
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop fs -mkdir /wordcount/input
+
+9. Copy all text files available at Hadoop DIstribution to Hadoop directory,
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop fs -copyFromLocal $HADOOP_HOME/*.txt /wordcount/input/
+
+
+10. Running Hadoop Mapreduce job by following command::
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop jar wordcount.jar com.PACKT.chapter1.WordCount /wordcount/input/ /wordcount/output/
+
+output::
+13/06/27 01:02:11 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+13/06/27 01:02:11 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+13/06/27 01:02:11 WARN snappy.LoadSnappy: Snappy native library not loaded
+13/06/27 01:02:11 INFO mapred.FileInputFormat: Total input paths to process : 4
+13/06/27 01:02:11 INFO mapred.JobClient: Running job: job_201306270047_0014
+13/06/27 01:02:12 INFO mapred.JobClient:  map 0% reduce 0%
+13/06/27 01:02:21 INFO mapred.JobClient:  map 40% reduce 0%
+13/06/27 01:02:27 INFO mapred.JobClient:  map 60% reduce 0%
+13/06/27 01:02:28 INFO mapred.JobClient:  map 80% reduce 0%
+13/06/27 01:02:30 INFO mapred.JobClient:  map 100% reduce 0%
+13/06/27 01:02:32 INFO mapred.JobClient:  map 100% reduce 33%
+13/06/27 01:02:34 INFO mapred.JobClient:  map 100% reduce 100%
+13/06/27 01:02:36 INFO mapred.JobClient: Job complete: job_201306270047_0014
+13/06/27 01:02:36 INFO mapred.JobClient: Counters: 30
+13/06/27 01:02:36 INFO mapred.JobClient:   Job Counters 
+13/06/27 01:02:36 INFO mapred.JobClient:     Launched reduce tasks=1
+13/06/27 01:02:36 INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=29005
+13/06/27 01:02:36 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+13/06/27 01:02:36 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+13/06/27 01:02:36 INFO mapred.JobClient:     Launched map tasks=5
+13/06/27 01:02:36 INFO mapred.JobClient:     Data-local map tasks=5
+13/06/27 01:02:36 INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=13011
+13/06/27 01:02:36 INFO mapred.JobClient:   File Input Format Counters 
+13/06/27 01:02:36 INFO mapred.JobClient:     Bytes Read=480089
+13/06/27 01:02:36 INFO mapred.JobClient:   File Output Format Counters 
+13/06/27 01:02:36 INFO mapred.JobClient:     Bytes Written=163235
+13/06/27 01:02:36 INFO mapred.JobClient:   FileSystemCounters
+13/06/27 01:02:36 INFO mapred.JobClient:     FILE_BYTES_READ=810046
+13/06/27 01:02:36 INFO mapred.JobClient:     HDFS_BYTES_READ=480602
+13/06/27 01:02:36 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=1762123
+13/06/27 01:02:36 INFO mapred.JobClient:     HDFS_BYTES_WRITTEN=163235
+13/06/27 01:02:36 INFO mapred.JobClient:   Map-Reduce Framework
+13/06/27 01:02:36 INFO mapred.JobClient:     Map output materialized bytes=810070
+13/06/27 01:02:36 INFO mapred.JobClient:     Map input records=11941
+13/06/27 01:02:36 INFO mapred.JobClient:     Reduce shuffle bytes=810070
+13/06/27 01:02:36 INFO mapred.JobClient:     Spilled Records=122988
+13/06/27 01:02:36 INFO mapred.JobClient:     Map output bytes=687052
+13/06/27 01:02:36 INFO mapred.JobClient:     Total committed heap usage (bytes)=855769088
+13/06/27 01:02:36 INFO mapred.JobClient:     CPU time spent (ms)=6490
+13/06/27 01:02:36 INFO mapred.JobClient:     Map input bytes=476850
+13/06/27 01:02:36 INFO mapred.JobClient:     SPLIT_RAW_BYTES=513
+13/06/27 01:02:36 INFO mapred.JobClient:     Combine input records=0
+13/06/27 01:02:36 INFO mapred.JobClient:     Reduce input records=61494
+13/06/27 01:02:36 INFO mapred.JobClient:     Reduce input groups=12353
+13/06/27 01:02:36 INFO mapred.JobClient:     Combine output records=0
+13/06/27 01:02:36 INFO mapred.JobClient:     Physical memory (bytes) snapshot=997588992
+13/06/27 01:02:36 INFO mapred.JobClient:     Reduce output records=12353
+13/06/27 01:02:36 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=3728928768
+13/06/27 01:02:36 INFO mapred.JobClient:     Map output records=61494
+
+11. Checking the final output of the map Reduce command:
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop fs -cat /wordcount/output/part-00000 > output.txt
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+Listing Input files 
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop fs -ls /wordcount/input
+Found 4 items
+-rw-r--r--   1 hduser supergroup     462017 2013-06-27 00:36 /wordcount/input/CHANGES.txt
+-rw-r--r--   1 hduser supergroup      13366 2013-06-27 00:36 /wordcount/input/LICENSE.txt
+-rw-r--r--   1 hduser supergroup        101 2013-06-27 00:36 /wordcount/input/NOTICE.txt
+-rw-r--r--   1 hduser supergroup       1366 2013-06-27 00:36 /wordcount/input/README.txt
+
+Output of MapReduce:: 
+hduser@ubuntu:/usr/local/hadoop$ bin/hadoop fs -cat /wordcount/output/part-00000

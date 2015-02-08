@@ -1,0 +1,67 @@
+================================================================================
+Book - Big Data Analytics with R and Hadoop
+Book URL - https://www.packtpub.com/big-data-analytics-with-r-and-hadoop/book
+Chapter - 4 Using Hadoop Streaming with R 
+Author - Vignesh Prajapati
+Contact - a. email -> vignesh2066@gmail.com
+          b. LinkedIn -> http://www.linkedin.com/in/vigneshprajapati   	  
+================================================================================
+
+packageJobJar: [/tmp/RtmpwVNuHx/rmr-local-envf06338e87f4, /tmp/RtmpwVNuHx/rmr-global-envf064f5beca1, /tmp/RtmpwVNuHx/rmr-streaming-mapf06b58a4b7, /tmp/RtmpwVNuHx/rmr-streaming-reducef062022d6fa, /app/hadoop/tmp/hadoop-unjar844846107222182008/] [] /tmp/streamjob2309454506586938412.jar tmpDir=null
+13/08/25 08:24:42 INFO mapred.FileInputFormat: Total 
+input paths to process : 1
+13/08/25 08:24:43 INFO streaming.StreamJob: getLocalDirs(): [/app/hadoop/tmp/mapred/local]
+13/08/25 08:24:43 INFO streaming.StreamJob: Running job: job_201308250742_0005
+13/08/25 08:24:43 INFO streaming.StreamJob: To kill this job, run:
+13/08/25 08:24:43 INFO streaming.StreamJob: /usr/local/hadoop/libexec/../bin/hadoop job  -Dmapred.job.tracker=localhost:54311 -kill job_201308250742_0005
+13/08/25 08:24:43 INFO streaming.StreamJob: Tracking URL: http://localhost:50030/jobdetails.jsp?jobid=job_201308250742_0005
+13/08/25 08:24:44 INFO streaming.StreamJob:  
+map 0%  reduce 0%
+
+13/08/25 08:25:19 INFO streaming.StreamJob:  
+map 50%  reduce 0%
+
+13/08/25 08:26:10 INFO streaming.StreamJob:  
+map 100%  reduce 0%
+
+13/08/25 08:26:27 INFO streaming.StreamJob:  
+map 100%  reduce 70%
+
+13/08/25 08:26:39 INFO streaming.StreamJob:  
+map 100%  reduce 100%
+
+13/08/25 08:26:52 INFO streaming.StreamJob:
+Job complete: job_201308250742_0005
+
+13/08/25 08:26:52 INFO streaming.StreamJob: Output: /tmp/RtmpwVNuHx/filef0644a11917
+packageJobJar: [/tmp/RtmpwVNuHx/rmr-local-envf0651b421aa, /tmp/RtmpwVNuHx/rmr-global-envf06bf1a11b, /tmp/RtmpwVNuHx/rmr-streaming-mapf06a473ca2, /tmp/RtmpwVNuHx/rmr-streaming-reducef063490aa44, /tmp/RtmpwVNuHx/rmr-streaming-combinef0624bbb28e, /app/hadoop/tmp/hadoop-unjar6956059477298955068/] [] /tmp/streamjob2338568430843050614.jar tmpDir=null
+13/08/25 08:27:01 INFO mapred.FileInputFormat: Total input paths to process : 1
+13/08/25 08:27:02 INFO streaming.StreamJob: getLocalDirs(): [/app/hadoop/tmp/mapred/local]
+13/08/25 08:27:02 INFO streaming.StreamJob: Running job: job_201308250742_0006
+13/08/25 08:27:02 INFO streaming.StreamJob: To kill this job, run:
+13/08/25 08:27:02 INFO streaming.StreamJob: /usr/local/hadoop/libexec/../bin/hadoop job  -Dmapred.job.tracker=localhost:54311 -kill job_201308250742_0006
+13/08/25 08:27:02 INFO streaming.StreamJob: Tracking 
+URL: http://localhost:50030/jobdetails.jsp?jobid=job_201308250742_0006
+13/08/25 08:27:03 INFO streaming.StreamJob:  
+map 0%  reduce 0%
+
+13/08/25 08:27:35 INFO streaming.StreamJob:  
+map 9%  reduce 0%
+
+13/08/25 08:28:02 INFO streaming.StreamJob:  
+map 100%  reduce 0%
+
+13/08/25 08:28:38 INFO streaming.StreamJob:  
+map 100%  reduce 17%
+
+13/08/25 08:28:41 INFO streaming.StreamJob:  
+map 100%  reduce 89%
+
+13/08/25 08:28:53 INFO streaming.StreamJob:  
+map 100%  reduce 100%
+
+13/08/25 08:29:05 INFO streaming.StreamJob: 
+Job complete: job_201308250742_0006
+
+13/08/25 08:29:05 INFO streaming.StreamJob: 
+Output: /tmp/RtmpwVNuHx/filef06881ac98
